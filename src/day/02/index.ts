@@ -28,6 +28,7 @@ const gameScores: Scores = {
 
 const checkWon = (round: string) =>
   winningScore.includes(round) ? gameScores.win : 0;
+
 const checkDraw = (round: string) =>
   drawingScore.includes(round) ? gameScores.draw : 0;
 
@@ -50,11 +51,9 @@ const GameStates: Scores = {
 };
 
 const parseScore = (arr: string[], curr: string): number => {
-  const findIndex = arr
-    .map((i) => i.split(""))
-    .findIndex((t) => {
-      return t.find((i) => i === curr);
-    });
+  const findIndex = arr.findIndex((t) => {
+    return t.includes(curr);
+  });
   return findIndex >= 0 ? shapeScores[arr[findIndex][1]] : 0;
 };
 
