@@ -26,11 +26,8 @@ const gameScores: Scores = {
   draw: 3,
 };
 
-const checkWon = (round: string): number =>
-  winningScore.includes(round) ? gameScores.win : 0;
-
-const checkDraw = (round: string): number =>
-  drawingScore.includes(round) ? gameScores.draw : 0;
+const checkPlay = (input: string[], round: string): number =>
+  input.includes(round) ? gameScores.win : 0;
 
 const parseRounds = (game: string): string[] =>
   game.split("\n").map((i) => i.replace(/\s+/g, ""));
@@ -38,7 +35,10 @@ const parseRounds = (game: string): string[] =>
 const day2 = (list: string): number => {
   return parseRounds(list).reduce(
     (it: number, curr: string) =>
-      (it += shapeScores[curr[1]] + checkWon(curr) + checkDraw(curr)),
+      (it +=
+        shapeScores[curr[1]] +
+        checkPlay(winningScore, curr) +
+        checkPlay(drawingScore, curr)),
     0
   );
 };
@@ -57,14 +57,15 @@ const parseScore = (arr: string[], curr: string): number => {
 
 const day2Step2 = (list: string): number => {
   return parseRounds(list).reduce((it, play: string) => {
+    let result = [];
     if (play[1] === "Z") {
-      it += parseScore(winningScore, play[0]);
+      result = winningScore;
     } else if (play[1] === "Y") {
-      it += parseScore(drawingScore, play[0]);
+      result = drawingScore;
     } else {
-      it += parseScore(losingScore, play[0]);
+      result = losingScore;
     }
-    return (it += GameStates[play[1]]);
+    return (it += GameStates[play[1]] + parseScore(result, play[0]));
   }, 0);
 };
 
