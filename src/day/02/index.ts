@@ -51,22 +51,20 @@ const GameStates: Scores = {
 };
 
 const parseScore = (arr: string[], curr: string): number => {
-  const findIndex = arr.findIndex((t) => {
-    return t.includes(curr);
-  });
+  const findIndex = arr.findIndex((t) => t.includes(curr));
   return findIndex >= 0 ? shapeScores[arr[findIndex][1]] : 0;
 };
 
 const day2Step2 = (list: string): number => {
-  return parseRounds(list).reduce((it, curr: string) => {
-    if (curr[1] === "Z") {
-      it += parseScore(winningScore, curr[0]);
-    } else if (curr[1] === "Y") {
-      it += parseScore(drawingScore, curr[0]);
+  return parseRounds(list).reduce((it, play: string) => {
+    if (play[1] === "Z") {
+      it += parseScore(winningScore, play[0]);
+    } else if (play[1] === "Y") {
+      it += parseScore(drawingScore, play[0]);
     } else {
-      it += parseScore(losingScore, curr[0]);
+      it += parseScore(losingScore, play[0]);
     }
-    return (it += GameStates[curr[1]]);
+    return (it += GameStates[play[1]]);
   }, 0);
 };
 
