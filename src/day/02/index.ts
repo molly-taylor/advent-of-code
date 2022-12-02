@@ -45,9 +45,9 @@ const day2 = (list: string): number => {
 
 //STEP TWO
 const GameStates: Scores = {
-  ["X"]: 0, //win
+  ["X"]: 0, //lose
   ["Y"]: 3, //draw
-  ["Z"]: 6, //lose
+  ["Z"]: 6, //win
 };
 
 const parseScore = (arr: string[], curr: string): number => {
