@@ -26,10 +26,10 @@ const gameScores: Scores = {
   draw: 3,
 };
 
-const checkWon = (round: string) =>
+const checkWon = (round: string): number =>
   winningScore.includes(round) ? gameScores.win : 0;
 
-const checkDraw = (round: string) =>
+const checkDraw = (round: string): number =>
   drawingScore.includes(round) ? gameScores.draw : 0;
 
 const parseRounds = (game: string): string[] =>
