@@ -58,6 +58,7 @@ const parseScore = (arr: string[], curr: string): number => {
 const day2Step2 = (list: string): number => {
   return parseRounds(list).reduce((it, play: string) => {
     let result = [];
+
     if (play[1] === "Z") {
       result = winningScore;
     } else if (play[1] === "Y") {
