@@ -39,16 +39,19 @@ const parseString2 = (game: string): string[][] =>
     .match(/(?=[\s\S])(?:^.*$\n?){1,3}/gm)
     ?.map((i) => i.split("\n")) || [];
 
+const findDuplicate = (input: string, set: Set<string>): string[] =>
+  [...input].filter((j) => set.has(j));
+
 const day3Step3 = (list: string): number => {
   let total = 0;
   const parsed = parseString2(list);
 
   for (let i = 0; i < parsed.length; i++) {
     let set = new Set([...parsed[i][0]]);
-    let matchingChar = [...parsed[i][1]].filter((j) => set.has(j));
+    let matchingChar = findDuplicate(parsed[i][1], set);
 
     set = new Set(matchingChar);
-    matchingChar = [...parsed[i][2]].filter((j) => set.has(j));
+    matchingChar = findDuplicate(parsed[i][2], set);
 
     total += getLetterScore(matchingChar[0]);
   }
