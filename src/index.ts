@@ -3,6 +3,6 @@
 ** https://adventofcode.com/2022/
 */
 
-import { executeDay4 } from "./day/04";
+import { executeDay5 } from "./day/05";
 
-executeDay4;
+executeDay5;

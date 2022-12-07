@@ -41,6 +41,6 @@ const day4Step2 = (list: string): number => {
 };
 
 export const executeDay4 = ((gameInput: string): void => {
-  console.log("Advent of Code - Day 3 🎄🎅", day4(gameInput));
-  console.log("Advent of Code - Day 3 [2] 🎄🎅", day4Step2(gameInput));
+  console.log("Advent of Code - Day 4 🎄🎅", day4(gameInput));
+  console.log("Advent of Code - Day 4 [2] 🎄🎅", day4Step2(gameInput));
 })(input);
