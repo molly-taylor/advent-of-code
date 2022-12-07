@@ -23,7 +23,6 @@ const parseInput = (game: string) => {
         [from]: parseInt(source),
         [to]: parseInt(target),
       });
-      console.log(move, quantity, from, source, to, target);
     } else {
       for (let index = 0; index < line.length; index += 4) {
         let stack = index / 4 + 1;
