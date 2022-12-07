@@ -38,7 +38,7 @@ const parseInput = (game: string) => {
   return { stackContainer, gamePlay };
 };
 
-const day5 = (list: string) => {
+const day5 = (list: string): string => {
   const { stackContainer, gamePlay } = parseInput(list);
   gamePlay.forEach(({ from, to, move }) => {
     const cratesToMove = stackContainer[from].substring(0, move);
@@ -51,7 +51,7 @@ const day5 = (list: string) => {
   );
 };
 
-const day5Step2 = (list: string) => {
+const day5Step2 = (list: string): string => {
   const { stackContainer, gamePlay } = parseInput(list);
   gamePlay.forEach(({ from, to, move }) => {
     const cratesToMove = stackContainer[from].substring(0, move);
